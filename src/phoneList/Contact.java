@@ -20,5 +20,57 @@ package phoneList;
 
 
 public class Contact {
-
+	
+	//parameters
+	private String name;
+	private String phoneNum;
+	
+	
+	
+	//constructor
+	public Contact(String name, String phoneNum) {
+		this.name = name;
+		this.phoneNum = phoneNum;
+		
+	}
+	
+	//default constructor
+	public Contact() {
+		name = "No Name";
+		phoneNum  = "No Number";
+	}
+	
+	public Contact(String name) {
+		this.name = name;
+		this.phoneNum = "No Number";
+	}
+	
+	
+	//getter methods
+	public String getName() {
+		return name;
+	}
+	public String getPhone() {
+		return phoneNum;
+	}
+	
+	
+	//setter methods
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setPhone(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
+	
+	
+	
+	//override
+	@Override
+	public String toString() {
+		return "Name: " + name
+		 	 + "Phone Number: " + phoneNum;
+		 	 
+	}
+	
 }
