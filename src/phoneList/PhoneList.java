@@ -55,8 +55,13 @@ public class PhoneList {
 	 */
 	public void addContact() {
 		
+		Scanner inKey = new Scanner(System.in);
+		System.out.println("What is the Name and Phone Number of the contact you wish to add?");
+		String contact2 = inKey.nextLine();
+		
+		
 		if  (searchContactByPhoneNumber(phoneNum) == -1) {
-		Contact contact = new Contact(name,phoneNum);
+		Contact contact = new Contact(contact2);
 		Contact.add(contact);
 		System.out.println("Contact " + name + " with phone number " + phoneNum + " just added!");
 	}
@@ -88,6 +93,10 @@ public class PhoneList {
 	 */
 	public void removeContact() {
 		
+		Scanner inKey = new Scanner(System.in);
+		System.out.println("Which contact do you wish to remove?");
+		String remove = inKey.nextLine();
+		
 		int index =  searchContactByPhoneNumber(phoneNum);
 		if (index >= 0) {
 			System.out.println("You have removed " + myContacts.get(index).getName());
@@ -109,6 +118,9 @@ public class PhoneList {
 	 *          #################
 	 */
 	public void printList() {
+		
+		System.out.println("Name                     Phone Number       \n ------------------------------------------");
+		
 		if (!myContacts.isEmpty()) {
 			for (int i = 0; i < myContacts.size(); i++) {
 				System.out.println(i + 1 + ". " + "Name: " + myContacts.get(i).getName() + " || Phone Number: " + myContacts.get(i).getPhone());
