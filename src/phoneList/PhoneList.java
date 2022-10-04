@@ -1,5 +1,6 @@
 package phoneList;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
@@ -29,12 +30,15 @@ public class PhoneList {
 	/*
 	 * Instance Variables
 	 */
-	
+	public String phoneNum;
+	public String name;
+	public ArrayList<Contact> myContacts = new ArrayList<Contact>();
 	
 	
 	//Constructor
 	public PhoneList() {
 		//initialize instance variables
+		this.phoneNum = phoneNum;
 	}
 	
 	
@@ -51,11 +55,23 @@ public class PhoneList {
 	 */
 	public void addContact() {
 		
-		
+		if  (searchContactByPhoneNumber(phoneNum) == -1) {
+		Contact contact = new Contact(name,phoneNum);
+		Contact.add(contact);
+		System.out.println("Contact " + name + " with phone number " + phoneNum + " just added!");
+	}
+		else {
+			System.out.println("This contact already exists on your phone");
+		}
 	}
 	
 	
-	
+	private int searchContactByPhoneNumber(String phoneNum2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 	/*
 	 * This should do the following
 	 * (whatever order you feel is best)
@@ -72,6 +88,11 @@ public class PhoneList {
 	 */
 	public void removeContact() {
 		
+		int index =  searchContactByPhoneNumber(phoneNum);
+		if (index >= 0) {
+			System.out.println("You have removed " + myContacts.get(index).getName());
+			myContacts.remove(index);
+		}
 		
 	}
 	
@@ -88,7 +109,15 @@ public class PhoneList {
 	 *          #################
 	 */
 	public void printList() {
-		
+		if (!myContacts.isEmpty()) {
+			for (int i = 0; i < myContacts.size(); i++) {
+				System.out.println(i + 1 + ". " + "Name: " + myContacts.get(i).getName() + " || Phone Number: " + myContacts.get(i).getPhone());
+			}
+			
+		}
+		else {
+			System.out.println("Your contact list is empty! ");
+		}
 	}
 
 	
