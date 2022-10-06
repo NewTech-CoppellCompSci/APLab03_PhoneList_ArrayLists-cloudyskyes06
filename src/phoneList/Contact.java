@@ -48,10 +48,10 @@ public class Contact {
 	
 	//getter methods
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	public String getPhone() {
-		return phoneNum;
+		return this.phoneNum;
 	}
 	
 	
@@ -72,6 +72,15 @@ public class Contact {
 		 	 + "Phone Number: " + phoneNum;
 		 	 
 	}
+
+	public static void add(Contact contact) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	
 	
 }
 

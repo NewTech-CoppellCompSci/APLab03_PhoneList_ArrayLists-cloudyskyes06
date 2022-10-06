@@ -27,18 +27,19 @@ import java.util.Scanner;
 
 public class PhoneList {
 
+		ArrayList<Contact> contacts;
 	/*
 	 * Instance Variables
 	 */
 	public String phoneNum;
 	public String name;
-	public ArrayList<Contact> myContacts = new ArrayList<Contact>();
+	
 	
 	
 	//Constructor
 	public PhoneList() {
 		//initialize instance variables
-		this.phoneNum = phoneNum;
+		contacts = new ArrayList<Contact>();
 	}
 	
 	
@@ -56,25 +57,27 @@ public class PhoneList {
 	public void addContact() {
 		
 		Scanner inKey = new Scanner(System.in);
-		System.out.println("What is the Name and Phone Number of the contact you wish to add?");
-		String contact2 = inKey.nextLine();
+		System.out.println("What is the Name of the contact you wish to add?");
+		String Name = inKey.next();
 		
 		
-		if  (searchContactByPhoneNumber(phoneNum) == -1) {
-		Contact contact = new Contact(contact2);
-		Contact.add(contact);
-		System.out.println("Contact " + name + " with phone number " + phoneNum + " just added!");
-	}
-		else {
-			System.out.println("This contact already exists on your phone");
+		System.out.println("What is the Number of the contact you wish to add?");
+		String Number = inKey.next();
+		
+		
+		Contact contact = new Contact(Name, Number);
+		
+		int j = 0, i = 0;
+		
+		for (i = 0; i< contacts.size() && j != -1 && j !=0;  i++) {
+			j= Name.compareToIgnoreCase((contacts.get(i).getName()));
+		}
+		if (j == 0 || j == -1) {
+			contacts.add(i,contacts);
 		}
 	}
 	
 	
-	private int searchContactByPhoneNumber(String phoneNum2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
 	/*
@@ -95,16 +98,21 @@ public class PhoneList {
 		
 		Scanner inKey = new Scanner(System.in);
 		System.out.println("Which contact do you wish to remove?");
-		String remove = inKey.nextLine();
+		String remove = inKey.next();
 		
-		int index =  searchContactByPhoneNumber(phoneNum);
-		if (index >= 0) {
-			System.out.println("You have removed " + myContacts.get(index).getName());
-			myContacts.remove(index);
+		boolean found = true;
+		for (Contact contact : contacts) {
+			if (!found) {
+				if (contact.getName().equalsIgnoreCase(remove)){
+					found = true;
+				}
+				contacts.remove(contact);
+			}
+			
 		}
-		
+		System.out.println("Removed" + remove);
 	}
-	
+
 	
 	/*
 	 * This should
@@ -121,9 +129,9 @@ public class PhoneList {
 		
 		System.out.println("Name                     Phone Number       \n ------------------------------------------");
 		
-		if (!myContacts.isEmpty()) {
-			for (int i = 0; i < myContacts.size(); i++) {
-				System.out.println(i + 1 + ". " + "Name: " + myContacts.get(i).getName() + " || Phone Number: " + myContacts.get(i).getPhone());
+		if (!contacts.isEmpty()) {
+			for (int i = 0; i < contacts.size(); i++) {
+				System.out.println(i + 1 + ". " + "Name: " + contacts.get(i).getName() + " || Phone Number: " + contacts.get(i).getPhone());
 			}
 			
 		}
