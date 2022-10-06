@@ -22,8 +22,8 @@ package phoneList;
 public class Contact {
 	
 	//parameters
-	private String name;
-	private String phoneNum;
+	public String name;
+	public String phoneNum;
 	
 	
 	
@@ -48,10 +48,10 @@ public class Contact {
 	
 	//getter methods
 	public String getName() {
-		return this.name;
+		return name;
 	}
 	public String getPhone() {
-		return this.phoneNum;
+		return phoneNum;
 	}
 	
 	
@@ -71,11 +71,6 @@ public class Contact {
 		return "Name: " + name
 		 	 + "Phone Number: " + phoneNum;
 		 	 
-	}
-
-	public static void add(Contact contact) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	
